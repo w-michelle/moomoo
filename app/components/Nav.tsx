@@ -28,15 +28,9 @@ const Nav = (props: Props) => {
   }, 0);
 
   useEffect(() => {
-    console.log(cart);
     const fetchCartData = async () => {
       const response = await fetch("/api/get-cart");
       const data = await response.json();
-      if (data) {
-        console.log("ok");
-      } else {
-        console.log("falsse");
-      }
 
       if (data.cart && data.cart.products) {
         const products = data.cart.products;
@@ -45,7 +39,7 @@ const Nav = (props: Props) => {
     };
     fetchCartData();
   }, []);
-  console.log(session?.user);
+
   return (
     <div className="w-full flex items-center px-4 justify-between">
       {/* menu icon */}

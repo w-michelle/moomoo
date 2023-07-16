@@ -37,7 +37,7 @@ export async function POST(res: Request) {
   switch (event.type) {
     case "payment_intent.created":
       const paymentIntent = event.data.object;
-      console.log("Payment intent was created");
+
       break;
     case "charge.succeeded":
       const charge = event.data.object as Stripe.Charge;

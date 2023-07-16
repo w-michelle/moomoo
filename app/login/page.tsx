@@ -24,7 +24,6 @@ const Page = () => {
     if (data.user) {
       signIn("credentials", { username: data.user.email });
     } else {
-      console.log("check your credentials");
       return null;
     }
   };
