@@ -55,7 +55,7 @@ model Product {
 
   cart       Cart?   @relation(fields: [cartId], references: [id])
   cartId     String?
-  cartItemID String? @unique
+  cartItemID String?
 }
 
 model Account {
