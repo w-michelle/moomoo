@@ -10,6 +10,6 @@ export async function POST(req: NextRequest) {
       email: username,
     },
   });
-  console.log(user);
+
   return NextResponse.json({ user });
 }
