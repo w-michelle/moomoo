@@ -4,11 +4,11 @@ import { prisma } from "@/util/prisma";
 import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",
@@ -52,5 +52,4 @@ export async function POST(res: Request) {
       console.log("Unhandled event type:" + event.type);
   }
   return NextResponse.json({ received: true });
-  //   res.json({ received: true })
 }

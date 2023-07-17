@@ -42,7 +42,6 @@ function Checkout() {
         .then((res) => {
           if (res.status === 403) {
             return router.push("/login");
-            // return router.push("/api/auth/signin");
           }
           return res.json();
         })
@@ -63,7 +62,7 @@ function Checkout() {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-100px)]">
+    <div className="w-full min-h-[100vh]">
       {checkoutStatus === "" && clientSecret && (
         <div className="w-full p-4">
           <Elements options={options} stripe={stripePromise}>

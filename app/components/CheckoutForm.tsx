@@ -48,14 +48,16 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
       .then((result) => {
         if (!result.error) {
           dispatch(setCheckout("success"));
+        } else {
+          console.log(result.error);
         }
 
         setIsLoading(false);
       });
   };
-  // if (isLoading) return <p className="text-center m-10 text-xl">Loading ...</p>;
+
   return (
-    <>
+    <div className="min-h-[100vh]">
       <h1 className="text-2xl mb-6">Checkout</h1>
       <form onSubmit={handleSubmit} id="payment-form">
         <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
@@ -72,7 +74,7 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
           </span>
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

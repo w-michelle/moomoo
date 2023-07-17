@@ -25,6 +25,7 @@ const Dashboard = () => {
   const fetchOrders = async () => {
     const response = await fetch("/api/get-orders");
     const data = await response.json();
+    console.log(data);
     return data;
   };
 

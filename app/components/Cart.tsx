@@ -137,7 +137,7 @@ const Cart = () => {
                     <p>${orderTotal / 100}</p>
                   </div>
                   {/* checkout */}
-                  {/* <div className="mt-4 bg-black text-white text-center py-3"> */}
+
                   <Link href="/checkout">
                     <button
                       className="mt-4 bg-black text-white text-center py-3 w-full"
@@ -146,7 +146,6 @@ const Cart = () => {
                       CHECKOUT
                     </button>
                   </Link>
-                  {/* </div> */}
                 </div>
               </div>
             </div>

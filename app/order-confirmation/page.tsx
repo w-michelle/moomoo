@@ -30,7 +30,7 @@ const OrderConfirmed = () => {
   };
 
   return (
-    <div className="w-full min-h[100vh] flex flex-col items-center justify-center p-10">
+    <div className="w-full min-h-[100vh] flex flex-col items-center justify-center p-10">
       <h1 className="text-2xl font-bold mb-4">THANK YOU</h1>
       <p className="text-center">
         Your order has been received and we are excited to send it your way!
