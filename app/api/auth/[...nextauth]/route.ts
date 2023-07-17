@@ -26,26 +26,27 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     //other providers (githib, regular credentials)
-    CredentialsProvider({
-      name: "Credentials",
+    // CredentialsProvider({
+    //   name: "Credentials",
 
-      credentials: {
-        username: { label: "userame", type: "text" },
-      },
-      async authorize(credentials, req) {
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials?.username,
-          },
-        });
-        if (!user) {
-          throw new Error("Invalid credentials");
-        }
+    //   credentials: {
+    //     username: { label: "userame", type: "text" },
+    //   },
+    //   async authorize(credentials, req) {
+    //     const user = await prisma.user.findUnique({
+    //       where: {
+    //         email: credentials?.username,
+    //       },
+    //     });
+    //     console.log(user);
+    //     if (!user) {
+    //       throw new Error("Invalid credentials");
+    //     }
 
-        return user;
-        //give user back to client
-      },
-    }),
+    //     return user;
+    //     //give user back to client
+    //   },
+    // }),
   ],
 
   events: {
@@ -56,7 +57,6 @@ export const authOptions: NextAuthOptions = {
       //create a stripe customer
       const customer = await stripe.customers.create({
         email: user.email || undefined,
-        // name: user.name || undefined,
       });
 
       //update our prisma user with stripecustomer id
@@ -74,6 +74,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
+      console.log("Session created:", session);
       if (session?.user) {
         session.user.id = token.id?.toString();
       }
