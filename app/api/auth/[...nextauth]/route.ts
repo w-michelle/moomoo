@@ -25,28 +25,27 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-    //other providers (githib, regular credentials)
-    // CredentialsProvider({
-    //   name: "Credentials",
 
-    //   credentials: {
-    //     username: { label: "userame", type: "text" },
-    //   },
-    //   async authorize(credentials, req) {
-    //     const user = await prisma.user.findUnique({
-    //       where: {
-    //         email: credentials?.username,
-    //       },
-    //     });
-    //     console.log(user);
-    //     if (!user) {
-    //       throw new Error("Invalid credentials");
-    //     }
+    CredentialsProvider({
+      name: "Credentials",
 
-    //     return user;
-    //     //give user back to client
-    //   },
-    // }),
+      credentials: {
+        username: { label: "userame", type: "text" },
+      },
+      async authorize(credentials, req) {
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials?.username,
+          },
+        });
+
+        if (!user) {
+          throw new Error("Invalid credentials");
+        }
+
+        return user;
+      },
+    }),
   ],
 
   events: {
@@ -74,7 +73,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
-      console.log("Session created:", session);
       if (session?.user) {
         session.user.id = token.id?.toString();
       }
