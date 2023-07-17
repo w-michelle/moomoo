@@ -31,7 +31,7 @@ export async function POST(res: Request) {
   switch (event.type) {
     case "payment_intent.created":
       const paymentIntent = event.data.object;
-
+      console.log("Payment intent was created");
       break;
     case "charge.succeeded":
       const charge = event.data.object as Stripe.Charge;
@@ -43,7 +43,7 @@ export async function POST(res: Request) {
       }
       break;
     default:
-      console.log("Unhandled event type:" + event.type);
+      throw new Error("Unhandled event type:" + event.type);
   }
   return NextResponse.json({ received: true });
 }
