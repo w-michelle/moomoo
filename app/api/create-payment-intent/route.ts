@@ -1,6 +1,8 @@
+import { authOptions } from "./../auth/[...nextauth]/route";
+
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
+
 import { getServerSession } from "next-auth";
 import { CartItem } from "@/app/Redux/features/cartSlice";
 import { prisma } from "@/util/prisma";

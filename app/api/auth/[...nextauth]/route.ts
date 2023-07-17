@@ -47,6 +47,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   events: {
     createUser: async ({ user }) => {
       const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -80,6 +81,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
+  debug: process.env.NODE_ENV === "development",
   pages: {
     signIn: "/login",
   },
