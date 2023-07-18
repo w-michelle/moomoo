@@ -39,8 +39,8 @@ const Nav = (props: Props) => {
     };
     fetchCartData();
   }, []);
+  console.log(session);
 
-  console.log(session?.user);
   return (
     <div className="w-full flex items-center px-4 justify-between">
       {/* menu icon */}
