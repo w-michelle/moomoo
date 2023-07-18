@@ -3,19 +3,21 @@ import { useEffect } from "react";
 import {
   clearCart,
   selectCart,
+  selectPaymentIntent,
   setCheckout,
   setPaymentIntent,
 } from "../Redux/features/cartSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 
 const OrderConfirmed = () => {
   const cart = useSelector(selectCart);
-
+  const paymentIntent = useSelector(selectPaymentIntent);
+  const dispatch = useDispatch();
   useEffect(() => {
     setPaymentIntent("");
-    clearCart();
-    console.log(cart);
+    dispatch(clearCart());
+
     fetch("/api/remove-cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

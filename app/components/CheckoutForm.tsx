@@ -51,7 +51,7 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
         if (!result.error) {
           dispatch(setCheckout("success"));
         } else {
-          console.log(result.error);
+          console.log(result.error.message);
         }
 
         setIsLoading(false);
