@@ -15,7 +15,7 @@ const OrderConfirmed = () => {
   useEffect(() => {
     setPaymentIntent("");
     clearCart();
-
+    console.log(cart);
     fetch("/api/remove-cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

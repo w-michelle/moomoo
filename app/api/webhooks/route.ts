@@ -28,22 +28,31 @@ export async function POST(res: Request) {
   } catch (err: any) {
     return new NextResponse(`Webook error: ${err.message}`, { status: 400 });
   }
-  switch (event.type) {
-    case "payment_intent.created":
-      const paymentIntent = event.data.object;
-      console.log("Payment intent was created");
-      break;
-    case "charge.succeeded":
-      const charge = event.data.object as Stripe.Charge;
-      if (typeof charge.payment_intent === "string") {
-        const order = await prisma.order.update({
-          where: { paymentIntentID: charge.payment_intent },
-          data: { status: "complete" },
-        });
-      }
-      break;
-    default:
-      throw new Error("Unhandled event type:" + event.type);
+
+  try {
+    switch (event.type) {
+      case "payment_intent.created":
+        const paymentIntent = event.data.object;
+        console.log("Payment intent was created");
+        break;
+      case "charge.succeeded":
+        const charge = event.data.object as Stripe.Charge;
+        if (typeof charge.payment_intent === "string") {
+          const order = await prisma.order.update({
+            where: { paymentIntentID: charge.payment_intent },
+            data: { status: "complete" },
+          });
+        }
+        break;
+      default:
+        throw new Error("Unhandled event type:" + event.type);
+    }
+  } catch (error) {
+    console.log(error);
+    return new NextResponse("Webhook error: webhook handler failed.", {
+      status: 400,
+    });
   }
-  return NextResponse.json({ received: true });
+
+  return NextResponse.json({ received: true }, { status: 200 });
 }
