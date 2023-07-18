@@ -14,18 +14,18 @@ const OrderConfirmed = () => {
   const cart = useSelector(selectCart);
   const paymentIntent = useSelector(selectPaymentIntent);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(clearCart());
 
+  useEffect(() => {
     fetch("/api/remove-cart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        cart: cart,
+        cart: [],
       }),
     });
 
     setTimeout(() => {
+      dispatch(clearCart());
       setPaymentIntent("");
     }, 1000);
   }, []);
