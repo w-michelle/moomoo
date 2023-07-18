@@ -38,7 +38,7 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
       return;
     }
     setIsLoading(true);
-
+    console.log("enter processing payment");
     stripe
       .confirmPayment({
         elements,
@@ -53,7 +53,7 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
         } else {
           console.log(result.error);
         }
-
+        console.log("hello");
         setIsLoading(false);
       });
   };
