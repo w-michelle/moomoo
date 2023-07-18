@@ -38,6 +38,7 @@ const Nav = (props: Props) => {
       }
     };
     fetchCartData();
+    console.log(session?.user);
   }, []);
 
   return (

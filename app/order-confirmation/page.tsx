@@ -11,6 +11,7 @@ import Link from "next/link";
 
 const OrderConfirmed = () => {
   const cart = useSelector(selectCart);
+
   useEffect(() => {
     setPaymentIntent("");
     clearCart();
@@ -23,6 +24,7 @@ const OrderConfirmed = () => {
       }),
     });
   }, []);
+
   const checkoutOrder = () => {
     setTimeout(() => {
       setCheckout("");
