@@ -28,19 +28,6 @@ const Cart = () => {
     dispatch(setIsCartOpen());
   };
 
-  useEffect(() => {
-    const fetchCartData = async () => {
-      const response = await fetch("/api/get-cart");
-      const data = await response.json();
-
-      if (data.cart && data.cart.products) {
-        const products = data.cart.products;
-        products.forEach((item: any) => dispatch(addToCart(item)));
-      }
-    };
-    fetchCartData();
-  }, [cart]);
-
   const removeItem = (id: string) => {
     dispatch(removeFromCart({ cartItemID: id }));
     if (session?.user) {
