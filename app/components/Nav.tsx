@@ -10,6 +10,7 @@ import {
   addToCart,
   selectCart,
   selectCartOpen,
+  setCheckout,
   setIsCartOpen,
 } from "../Redux/features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,16 +29,18 @@ const Nav = (props: Props) => {
   }, 0);
 
   useEffect(() => {
-    const fetchCartData = async () => {
-      const response = await fetch("/api/get-cart");
-      const data = await response.json();
+    setTimeout(() => {
+      const fetchCartData = async () => {
+        const response = await fetch("/api/get-cart");
+        const data = await response.json();
 
-      if (data.cart && data.cart.products) {
-        const products = data.cart.products;
-        products.forEach((item: any) => dispatch(addToCart(item)));
-      }
-    };
-    fetchCartData();
+        if (data.cart && data.cart.products) {
+          const products = data.cart.products;
+          products.forEach((item: any) => dispatch(addToCart(item)));
+        }
+      };
+      fetchCartData();
+    }, 3000);
   }, []);
   console.log(session);
 
