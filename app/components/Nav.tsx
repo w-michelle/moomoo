@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
@@ -20,6 +20,7 @@ const Nav = (props: Props) => {
   const [toggle, setToggle] = useState(false);
   const { data: session, status } = useSession();
   const [toggleProfile, setToggleProfile] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
   const cartOpen = useSelector(selectCartOpen);
@@ -27,6 +28,26 @@ const Nav = (props: Props) => {
   const numOfItems = cart.reduce((acc, item) => {
     return acc + item.quantity!;
   }, 0);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        event.target instanceof Node &&
+        !modalRef.current.contains(event.target)
+      ) {
+        setToggleProfile(false);
+      }
+    };
+
+    if (toggleProfile) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [toggleProfile]);
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -109,7 +130,10 @@ const Nav = (props: Props) => {
               />
 
               {toggleProfile && (
-                <div className="bg-[#EAEAEA] text-center rounded-md p-3 w-[100px] absolute bottom-[-120px] left-[-35px] z-50">
+                <div
+                  ref={modalRef}
+                  className="bg-[#EAEAEA] text-center rounded-md p-3 w-[100px] absolute bottom-[-120px] left-[-35px] z-50"
+                >
                   <Link
                     href="/dashboard"
                     onClick={() => setToggleProfile(!toggleProfile)}
