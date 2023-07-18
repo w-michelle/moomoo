@@ -29,18 +29,16 @@ const Nav = (props: Props) => {
   }, 0);
 
   useEffect(() => {
-    setTimeout(() => {
-      const fetchCartData = async () => {
-        const response = await fetch("/api/get-cart");
-        const data = await response.json();
+    const fetchCartData = async () => {
+      const response = await fetch("/api/get-cart");
+      const data = await response.json();
 
-        if (data.cart && data.cart.products) {
-          const products = data.cart.products;
-          products.forEach((item: any) => dispatch(addToCart(item)));
-        }
-      };
-      fetchCartData();
-    }, 2000);
+      if (data.cart && data.cart.products) {
+        const products = data.cart.products;
+        products.forEach((item: any) => dispatch(addToCart(item)));
+      }
+    };
+    fetchCartData();
   }, []);
   return (
     <div className="w-full flex items-center px-4 justify-between">
@@ -73,7 +71,9 @@ const Nav = (props: Props) => {
               {session?.user && (
                 <div className="flex flex-col items-start">
                   <Link href="/dashboard">Orders</Link>
-                  <button onClick={() => signOut()}>Log out</button>
+                  <Link href="/">
+                    <button onClick={() => signOut()}>Log out</button>
+                  </Link>
                 </div>
               )}
             </div>

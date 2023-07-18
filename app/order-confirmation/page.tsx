@@ -15,7 +15,6 @@ const OrderConfirmed = () => {
   const paymentIntent = useSelector(selectPaymentIntent);
   const dispatch = useDispatch();
   useEffect(() => {
-    setPaymentIntent("");
     dispatch(clearCart());
 
     fetch("/api/remove-cart", {
@@ -25,6 +24,10 @@ const OrderConfirmed = () => {
         cart: cart,
       }),
     });
+
+    setTimeout(() => {
+      setPaymentIntent("");
+    }, 1000);
   }, []);
 
   const checkoutOrder = () => {
