@@ -28,6 +28,7 @@ const Page = () => {
     }
   };
   if (session?.user) return route.push("/");
+  console.log(session?.user);
 
   return (
     <div className="h-[calc(100vh-100px)] flex flex-col items-center gap-6">
