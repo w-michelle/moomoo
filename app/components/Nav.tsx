@@ -28,22 +28,6 @@ const Nav = (props: Props) => {
     return acc + item.quantity!;
   }, 0);
 
-  useEffect(() => {
-    setTimeout(() => {
-      const fetchCartData = async () => {
-        const response = await fetch("/api/get-cart");
-        const data = await response.json();
-
-        if (data.cart && data.cart.products) {
-          const products = data.cart.products;
-          products.forEach((item: any) => dispatch(addToCart(item)));
-        }
-      };
-      fetchCartData();
-    }, 3000);
-  }, []);
-  console.log(session);
-
   return (
     <div className="w-full flex items-center px-4 justify-between">
       {/* menu icon */}
