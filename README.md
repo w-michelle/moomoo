@@ -1,6 +1,6 @@
 # MOOMOO BAKED
 
-MOOMOO BAKED is a eCommerce website for icecream. The design is a clone of a icecream shop called Ruru Baked.
+MOOMOO BAKED is a eCommerce website for icecream. The design is a clone of another icecream shop.
 
 **[View Site](https://moomoobaked.vercel.app)**
 
@@ -26,15 +26,15 @@ MOOMOO BAKED is a eCommerce website for icecream. The design is a clone of a ice
 
 |                     Homepage                     |                       Menu                       |
 | :----------------------------------------------: | :----------------------------------------------: |
-| <img src="/public/images/moo-1.png" width="300"> | <img src="/public/images/moo-2.png" width="300"> |
+| <img src="/public/images/moo-1.png" width="350"> | <img src="/public/images/moo-2.png" width="350"> |
 
 |                       Cart                       |                      Order                       |
 | :----------------------------------------------: | :----------------------------------------------: |
-| <img src="/public/images/moo-4.png" width="300"> | <img src="/public/images/moo-5.png" width="300"> |
+| <img src="/public/images/moo-4.png" width="350"> | <img src="/public/images/moo-5.png" width="350"> |
 
 |                     Payment                      |     |
 | :----------------------------------------------: | :-: |
-| <img src="/public/images/moo-6.png" width="300"> |     |
+| <img src="/public/images/moo-6.png" width="350"> |     |
 
 ## Getting Started
 
