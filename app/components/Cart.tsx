@@ -42,10 +42,14 @@ const Cart = () => {
     }
   };
 
-  const quantityChange = (id: string, value: string) => {
-    if (value === "increase") {
-      dispatch(increaseCount({ cartItemID: id }));
-      setIncrease("increase");
+  const increaseQty = (id: string) => {
+    dispatch(increaseCount({ cartItemID: id }));
+
+    setIncrease("increase");
+  };
+  const decreaseQty = (id: string, qty: number) => {
+    if (qty === 1) {
+      return;
     } else {
       dispatch(decreaseCount({ cartItemID: id }));
       setDecrease("decrease");
@@ -101,15 +105,13 @@ const Cart = () => {
                           <AiOutlineMinusSquare
                             className="text-2xl hover: cursor-pointer"
                             onClick={() =>
-                              quantityChange(item.cartItemID, "decrease")
+                              decreaseQty(item.cartItemID, item.quantity!)
                             }
                           />
                           <p>{item.quantity}</p>
                           <AiOutlinePlusSquare
                             className="text-2xl hover: cursor-pointe"
-                            onClick={() =>
-                              quantityChange(item.cartItemID, "increase")
-                            }
+                            onClick={() => increaseQty(item.cartItemID)}
                           />
                         </div>
 
