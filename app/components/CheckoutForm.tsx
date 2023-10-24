@@ -23,7 +23,6 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
   }, 0);
 
   useEffect(() => {
-    console.log(clientSecret);
     if (!stripe) {
       return;
     }
@@ -47,7 +46,6 @@ const CheckoutForm = (clientSecret: { clientSecret: string }) => {
         },
       })
       .then((result) => {
-        console.log(result);
         if (!result.error) {
           dispatch(setCheckout("success"));
         } else {

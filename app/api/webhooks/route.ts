@@ -48,7 +48,6 @@ export async function POST(res: Request) {
         throw new Error("Unhandled event type:" + event.type);
     }
   } catch (error) {
-    console.log(error);
     return new NextResponse("Webhook error: webhook handler failed.", {
       status: 400,
     });
