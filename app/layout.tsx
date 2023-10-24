@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata = {
   title: "MOO MOO BAKED",
-  description: "Premium ice creams",
+  description: "Premium ice cream",
 };
 
 export default function RootLayout({

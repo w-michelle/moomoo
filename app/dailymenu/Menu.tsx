@@ -16,22 +16,22 @@ const Menu = (place: { place: string }) => {
           <h3 className="text-2xl mb-4">SCOOPS</h3>
           {location === "fairview" ? (
             <div>
-              {flavors[0].fairview.scoops.map((item, index) => (
-                <p key={index}>{item}</p>
+              {flavors[0].fairview.scoops.map((item) => (
+                <p key={item.id}>{item.name}</p>
               ))}
             </div>
           ) : (
             <div>
-              {flavors[0].yorkdale.scoops.map((item, index) => (
-                <p key={index}>{item}</p>
+              {flavors[0].yorkdale.scoops.map((item) => (
+                <p key={item.id}>{item.name}</p>
               ))}
             </div>
           )}
         </div>
         <div>
           <h3 className="text-2xl mb-4">PINTS</h3>
-          {flavors[0].pints.map((item, index) => (
-            <p key={index}>{item}</p>
+          {flavors[0].pints.map((item) => (
+            <p key={item.id}>{item.name}</p>
           ))}
         </div>
       </div>
@@ -42,27 +42,27 @@ const Menu = (place: { place: string }) => {
           <div>
             <h4 className="font-extrabold">Ice Cream</h4>
 
-            {flavors[0].pricelist.icecream.map((item, index) => (
-              <p key={index}>
-                {Object.getOwnPropertyNames(item)}: {Object.values(item)}
+            {flavors[0].pricelist.icecream.map((item) => (
+              <p key={item.id}>
+                {Object.keys(item)[0]}: {Object.values(item)[0]}
               </p>
             ))}
-            {flavors[0].pricelist.cones.map((item, index) => (
-              <p key={index}>
-                {Object.getOwnPropertyNames(item)}: {Object.values(item)}
+            {flavors[0].pricelist.cones.map((item) => (
+              <p key={item.id}>
+                {Object.keys(item)[0]}: {Object.values(item)[0]}
               </p>
             ))}
-            {flavors[0].pricelist.packaged.map((item, index) => (
-              <p key={index}>
-                {Object.getOwnPropertyNames(item)}: {Object.values(item)}
+            {flavors[0].pricelist.packaged.map((item) => (
+              <p key={item.id}>
+                {Object.keys(item)[0]}: {Object.values(item)[0]}
               </p>
             ))}
           </div>
           <div>
             <h4 className="font-extrabold">Baked Goods</h4>
-            {flavors[0].pricelist.baked.map((item, index) => (
-              <p key={index}>
-                {Object.getOwnPropertyNames(item)}: {Object.values(item)}
+            {flavors[0].pricelist.baked.map((item) => (
+              <p key={item.id}>
+                {Object.keys(item)[0]}: {Object.values(item)[0]}
               </p>
             ))}
           </div>
