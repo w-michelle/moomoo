@@ -4,7 +4,7 @@ MOOMOO BAKED is a eCommerce website for icecream. The design is a clone of anoth
 
 **[View Site](https://moomoobaked.vercel.app)**
 
-## Build With
+## Built With
 
 - Next.js
 - Typescript
